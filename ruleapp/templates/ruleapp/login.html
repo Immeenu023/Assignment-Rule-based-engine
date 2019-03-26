@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+</head>
+<body>
+<h2>Login </h2>
+<form align="center" style="background-color:burlywood;width:500px" method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <div>
+        <br><br>
+        <label><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" style="background-color: aliceblue "><br><br>
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" style="background-color: aliceblue"><br><br>
+
+        <button type="submit" style="background-color: aliceblue">Login</button>
+        <br><br>
+
+    </div>
+</form>
+</body>
+</html>

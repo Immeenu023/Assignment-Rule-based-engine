@@ -1,0 +1,49 @@
+{% extends 'ruleapp/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h2>Welcome  {{ user.username }}! </h2>
+    {% else %}
+        <p>You are not logged in</p>
+    {% endif %}
+    <hr>
+    <br>
+    <form style="background-color:burlywood;width:1200px" method="POST" action="{% url 'addrule' %}" style="background-color: burlywood">
+        {% csrf_token %}
+        <br>
+        <br>
+        <div>
+            <label> Rule Name</label>
+            <input  type="text" name="rulename" placeholder="Rule Name" style="background-color: aliceblue">
+            <label>Campaign</label>
+            <input type="text" name="campaign" placeholder="Campaign" style="background-color: aliceblue">
+            <label>Schedule Time</label>
+            <input type="time" name="schedule" placeholder="Schedule Time" style="background-color: aliceblue">
+            <label>Action</label>
+            <input type="text" name="action" placeholder="Action" style="background-color: aliceblue">
+            <label>Status</label>
+            <input type="text" name="status" placeholder="Status" style="background-color: aliceblue">
+            <button type="submit" style="background-color: gray">Add Rule</button>
+            <br>
+            <br>
+        </div>
+    </form>
+    <br>
+    <hr>
+    <form>
+        {% csrf_token %}
+        <h2>Rules List</h2>
+
+        {% for d in rule %}
+            {{ d.ruleName }}
+            {{ d.campaigns }}
+            {{ d.schedule }}
+            {{ d.action }}
+            {{ d.status }}
+        {% endfor %}
+    </form>
+
+
+{% endblock %}
